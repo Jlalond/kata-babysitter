@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabySitterKata.Lib", "BabySitterKata.Lib\BabySitterKata.Lib.csproj", "{63A3CF1F-0815-4FE7-99C3-4720A4D77290}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabySitterKata.Tests", "BabySitterKata.Tests\BabySitterKata.Tests.csproj", "{F4A6709E-D575-467C-8916-7B3FE9C3C8D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63A3CF1F-0815-4FE7-99C3-4720A4D77290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A3CF1F-0815-4FE7-99C3-4720A4D77290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A3CF1F-0815-4FE7-99C3-4720A4D77290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A3CF1F-0815-4FE7-99C3-4720A4D77290}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4A6709E-D575-467C-8916-7B3FE9C3C8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A6709E-D575-467C-8916-7B3FE9C3C8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A6709E-D575-467C-8916-7B3FE9C3C8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A6709E-D575-467C-8916-7B3FE9C3C8D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB18A191-F5BB-40F7-9D94-566A7D2E2DAA}
+	EndGlobalSection
+EndGlobal
