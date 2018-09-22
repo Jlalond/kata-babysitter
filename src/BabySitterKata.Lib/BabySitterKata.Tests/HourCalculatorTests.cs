@@ -49,5 +49,13 @@ namespace BabySitterKata.Tests
             var fourteenHoursAfterStart = new DateTime(2000, 1, 6, 8, 0, 0);
             Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(startTime, fourteenHoursAfterStart));
         }
+
+        [Test]
+        public void ThrowsExceptionWhenEndTimeIsAfterFourAm()
+        {
+            var startTime = new DateTime(2000, 1, 2, 23, 0, 0, 0);
+            var endTime = new DateTime(2000, 1, 3, 5, 0, 0, 0);
+            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(startTime, endTime));
+        }
     }
 }
