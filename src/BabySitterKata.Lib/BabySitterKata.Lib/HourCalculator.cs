@@ -11,16 +11,7 @@ namespace BabySitterKata.Lib
         {
             var timeSpan = endTime - startTime;
             ValidateTimesAreAcceptable(startTime, endTime);
-            ValidateTimeToCalculate(timeSpan);
             return new TimeSpan(timeSpan.Hours, 0, 0);
-        }
-
-        private void ValidateTimeToCalculate(TimeSpan timeSpan)
-        {
-            if (timeSpan.Hours > 12 || timeSpan.Days > 2)
-            {
-                throw new ArgumentException("Cannot be longer than 12 hours, be a better parent and hangout with your kids");
-            }
         }
 
         private void ValidateTimesAreAcceptable(DateTime startTime, DateTime endTime)

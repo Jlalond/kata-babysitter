@@ -35,14 +35,6 @@ namespace BabySitterKata.Tests
         }
 
         [Test]
-        public void TooLongOfBabySittingThrowsException()
-        {
-            var startTime = new DateTime(2000, 1, 2, 0, 12, 12);
-            var endTime = new DateTime(2000, 1, 22, 0, 0, 0);
-            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(startTime, endTime));
-        }
-
-        [Test]
         public void ThrowsExceptionWhenStartTimeIsBeforeFivePm()
         {
             var startTime = new DateTime(2000, 1, 5, 18, 0, 0);
