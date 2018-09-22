@@ -18,37 +18,36 @@ namespace BabySitterKata.Tests
         [Test]
         public void GetBackTimeSpanWhenTwoDateTimesArePassedIn()
         {
-            var start = new DateTime(2000, 6, 14, 17, 0, 0);
-            var end = new DateTime(2000, 6, 14, 17, 0, 0);
-            var timespan = end - start;
-            Assert.AreEqual(timespan, _hourCalculator.CalculateTime(start, end));
+            var startTime = new DateTime(2000, 6, 14, 17, 0, 0);
+            var endTime = new DateTime(2000, 6, 14, 17, 0, 0);
+            var timespan = endTime - startTime;
+            Assert.AreEqual(timespan, _hourCalculator.CalculateTime(startTime, endTime));
         }
 
         [Test]
         public void GetBackCorrectNumberOfHours()
         {
             var timeSpan = new TimeSpan(5, 0, 0);
-            var start = new DateTime(2000, 2, 02, 17, 0, 0);
-            var end = new DateTime(2000, 2, 02, 22, 0, 52);
-            Assert.AreEqual(5, _hourCalculator.CalculateTime(start, end).Hours);
-            Assert.AreEqual(0, _hourCalculator.CalculateTime(start, end).Seconds);
+            var startTime = new DateTime(2000, 2, 02, 17, 0, 0);
+            var endTime = new DateTime(2000, 2, 02, 22, 0, 52);
+            Assert.AreEqual(5, _hourCalculator.CalculateTime(startTime, endTime).Hours);
+            Assert.AreEqual(0, _hourCalculator.CalculateTime(startTime, endTime).Seconds);
         }
 
         [Test]
         public void TooLongOfBabySittingThrowsException()
         {
-            var start = DateTime.UtcNow;
-            var end = DateTime.UtcNow;
-            end = end.AddDays(42);
-            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(start, end));
+            var startTime = new DateTime(2000, 1, 2, 0, 12, 12);
+            var endTime = new DateTime(2000, 1, 22, 0, 0, 0);
+            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(startTime, endTime));
         }
 
         [Test]
         public void ThrowsExceptionWhenStartTimeIsBeforeFivePm()
         {
-            var today = DateTime.Today;
-            var noonToday = today.AddHours(12);
-            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(noonToday, noonToday));
+            var startTime = new DateTime(2000, 1, 5, 18, 0, 0);
+            var fourteenHoursAfterStart = new DateTime(2000, 1, 6, 8, 0, 0);
+            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(startTime, fourteenHoursAfterStart));
         }
     }
 }
