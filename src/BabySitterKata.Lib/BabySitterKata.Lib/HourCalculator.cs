@@ -4,9 +4,12 @@ namespace BabySitterKata.Lib
 {
     public class HourCalculator
     {
-        public TimeSpan CalculateTime(DateTime start, DateTime end)
+        private const int NumberOfHoursToAddToEarliestStartTime = 17;
+
+        public TimeSpan CalculateTime(DateTime startTime, DateTime endTime)
         {
-            var timeSpan = end - start;
+            var timeSpan = endTime - startTime;
+            ValidateStartTimeIsAcceptable(startTime);
             ValidateTimeToCalculate(timeSpan);
             return new TimeSpan(timeSpan.Hours, 0, 0);
         }
@@ -17,7 +20,15 @@ namespace BabySitterKata.Lib
             {
                 throw new ArgumentException("Cannot be longer than 12 hours, be a better parent and hangout with your kids");
             }
-            
+        }
+
+        private void ValidateStartTimeIsAcceptable(DateTime startTime)
+        {
+            var earliestStartTime = new DateTime(startTime.Year, startTime.Month, startTime.Day, NumberOfHoursToAddToEarliestStartTime, 0, 0);
+            if (startTime < earliestStartTime)
+            {
+                throw new ArgumentException("StartTime cannot be before before " + earliestStartTime.ToLocalTime().ToString());
+            }
         }
     }
 }
