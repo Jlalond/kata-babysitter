@@ -6,15 +6,35 @@ namespace BabySitterKata.Lib
     {
         public int CalculatePayForNumberOfHours(DateTime startTime, DateTime endTime)
         {
-            var midnightOfBabysittingDay = new DateTime(startTime.Year, startTime.Month, startTime.Day, 0, 0, 0);
-            if(startTime > midnightOfBabysittingDay)
+            var midnightOfBabysittingDay = CalculateCorrectTimeForMidnight(startTime, endTime);
+            var total = 0;
+            var temporaryTime = startTime;
+            while (temporaryTime < endTime)
             {
-                return (endTime - startTime).Hours * 12;
+                if(temporaryTime < midnightOfBabysittingDay)
+                {
+                    total += 12;
+                }
+                else
+                {
+                    total += 16;
+                }
+                temporaryTime = temporaryTime.AddHours(1);
             }
-            else
+
+
+            return total;
+        }
+
+        private DateTime CalculateCorrectTimeForMidnight(DateTime startTime, DateTime endTime)
+        {
+            var midnightOfStarTime = new DateTime(startTime.Year, startTime.Month, startTime.Day);
+            if(startTime > midnightOfStarTime && endTime > midnightOfStarTime)
             {
-                return (endTime - startTime).Hours * 16;
+                return new DateTime(startTime.Year, startTime.Month, startTime.Day + 1);
             }
+
+            return midnightOfStarTime;
         }
     }
 }
