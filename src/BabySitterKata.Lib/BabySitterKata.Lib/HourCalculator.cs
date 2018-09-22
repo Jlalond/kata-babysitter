@@ -6,7 +6,7 @@ namespace BabySitterKata.Lib
     {
         public TimeSpan CalculateTime(TimeSpan timeSpan)
         {
-            return timeSpan;
+            return new TimeSpan(timeSpan.Hours, 0, 0);
         }
     }
 }

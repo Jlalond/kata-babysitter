@@ -14,5 +14,14 @@ namespace BabySitterKata.Tests
             var hourCalculator = new HourCalculator();
             Assert.AreEqual(timespan, hourCalculator.CalculateTime(timespan));
         }
+
+        [Test]
+        public void GetBackCorrectNumberOfHours()
+        {
+            var timeSpan = new TimeSpan(5, 0, 0);
+            var hourCalculator = new HourCalculator();
+            Assert.AreEqual(5, hourCalculator.CalculateTime(timeSpan).Hours);
+            Assert.AreEqual(0, hourCalculator.CalculateTime(timeSpan).Seconds);
+        }
     }
 }
