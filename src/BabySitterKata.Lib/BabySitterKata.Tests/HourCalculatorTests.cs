@@ -16,25 +16,32 @@ namespace BabySitterKata.Tests
         }
 
         [Test]
-        public void GetBackTimeWhenPassedIn()
+        public void GetBackTimeSpanWhenTwoDateTimesArePassedIn()
         {
-            var timespan = new TimeSpan();
-            Assert.AreEqual(timespan, _hourCalculator.CalculateTime(timespan));
+            var start = DateTime.UtcNow;
+            var end = DateTime.UtcNow;
+            var timespan = end - start;
+            Assert.AreEqual(timespan, _hourCalculator.CalculateTime(start, end));
         }
 
         [Test]
         public void GetBackCorrectNumberOfHours()
         {
             var timeSpan = new TimeSpan(5, 0, 0);
-            Assert.AreEqual(5, _hourCalculator.CalculateTime(timeSpan).Hours);
-            Assert.AreEqual(0, _hourCalculator.CalculateTime(timeSpan).Seconds);
+            var start = DateTime.UtcNow;
+            var end = DateTime.UtcNow.AddHours(5);
+            end = end.AddSeconds(52);
+            Assert.AreEqual(5, _hourCalculator.CalculateTime(start, end).Hours);
+            Assert.AreEqual(0, _hourCalculator.CalculateTime(start, end).Seconds);
         }
 
         [Test]
         public void TooLongOfBabySittingThrowsException()
         {
-            var timeSpan = new TimeSpan(42, 0, 0);
-            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(timeSpan));
+            var start = DateTime.UtcNow;
+            var end = DateTime.UtcNow;
+            end = end.AddDays(42);
+            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(start, end));
         }
     }
 }
