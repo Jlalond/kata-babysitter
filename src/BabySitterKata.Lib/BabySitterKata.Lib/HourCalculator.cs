@@ -2,7 +2,7 @@
 
 namespace BabySitterKata.Lib
 {
-    public class HourCalculator
+    public class HourValidator
     {
         private const int NumberOfHoursToAddToEarliestStartTime = 17;
         private const int MaximumBabysittingTime = 11;

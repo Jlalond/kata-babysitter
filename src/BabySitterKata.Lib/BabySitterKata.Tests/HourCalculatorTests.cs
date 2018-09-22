@@ -7,12 +7,12 @@ namespace BabySitterKata.Tests
     [TestFixture]
     public class HourCalculatorTests
     {
-        private HourCalculator _hourCalculator;
+        private HourValidator _hourCalculator;
 
         [OneTimeSetUp]
         public void SetUp()
         {
-            _hourCalculator = new HourCalculator();
+            _hourCalculator = new HourValidator();
         }
 
         [Test]
