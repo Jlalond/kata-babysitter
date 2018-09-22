@@ -5,8 +5,16 @@ using System;
 namespace BabySitterKata.Tests
 {
     [TestFixture]
-    public class UnitTest1
+    public class HourCalculatorTests
     {
+        private HourCalculator _hourCalculator;
+
+        [OneTimeSetUp]
+        public void SetUp()
+        {
+            _hourCalculator = new HourCalculator();
+        }
+
         [Test]
         public void GetBackTimeWhenPassedIn()
         {
