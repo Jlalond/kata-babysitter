@@ -19,17 +19,22 @@ namespace BabySitterKata.Tests
         public void GetBackTimeWhenPassedIn()
         {
             var timespan = new TimeSpan();
-            var hourCalculator = new HourCalculator();
-            Assert.AreEqual(timespan, hourCalculator.CalculateTime(timespan));
+            Assert.AreEqual(timespan, _hourCalculator.CalculateTime(timespan));
         }
 
         [Test]
         public void GetBackCorrectNumberOfHours()
         {
             var timeSpan = new TimeSpan(5, 0, 0);
-            var hourCalculator = new HourCalculator();
-            Assert.AreEqual(5, hourCalculator.CalculateTime(timeSpan).Hours);
-            Assert.AreEqual(0, hourCalculator.CalculateTime(timeSpan).Seconds);
+            Assert.AreEqual(5, _hourCalculator.CalculateTime(timeSpan).Hours);
+            Assert.AreEqual(0, _hourCalculator.CalculateTime(timeSpan).Seconds);
+        }
+
+        [Test]
+        public void TooLongOfBabySittingThrowsException()
+        {
+            var timeSpan = new TimeSpan(42, 0, 0);
+            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(timeSpan));
         }
     }
 }
