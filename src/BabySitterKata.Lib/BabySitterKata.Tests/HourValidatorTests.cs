@@ -5,7 +5,7 @@ using System;
 namespace BabySitterKata.Tests
 {
     [TestFixture]
-    public class HourCalculatorTests
+    public class HourValidatorTests
     {
         private HourValidator _hourCalculator;
 
@@ -20,18 +20,15 @@ namespace BabySitterKata.Tests
         {
             var startTime = new DateTime(2000, 6, 14, 17, 0, 0);
             var endTime = new DateTime(2000, 6, 14, 17, 0, 0);
-            var timespan = endTime - startTime;
-            Assert.AreEqual(timespan, _hourCalculator.CalculateTime(startTime, endTime));
+            Assert.DoesNotThrow(() => _hourCalculator.ValidateTimesAreAcceptable(startTime, endTime));
         }
 
         [Test]
         public void GetBackCorrectNumberOfHours()
         {
-            var timeSpan = new TimeSpan(5, 0, 0);
             var startTime = new DateTime(2000, 2, 02, 17, 0, 0);
             var endTime = new DateTime(2000, 2, 02, 22, 0, 52);
-            Assert.AreEqual(5, _hourCalculator.CalculateTime(startTime, endTime).Hours);
-            Assert.AreEqual(0, _hourCalculator.CalculateTime(startTime, endTime).Seconds);
+            Assert.DoesNotThrow(() => _hourCalculator.ValidateTimesAreAcceptable(startTime, endTime));
         }
 
         [Test]
@@ -39,7 +36,7 @@ namespace BabySitterKata.Tests
         {
             var startTime = new DateTime(2000, 1, 5, 18, 0, 0);
             var fourteenHoursAfterStart = new DateTime(2000, 1, 6, 8, 0, 0);
-            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(startTime, fourteenHoursAfterStart));
+            Assert.Throws<ArgumentException>(() => _hourCalculator.ValidateTimesAreAcceptable(startTime, fourteenHoursAfterStart));
         }
 
         [Test]
@@ -47,7 +44,7 @@ namespace BabySitterKata.Tests
         {
             var startTime = new DateTime(2000, 1, 2, 23, 0, 0, 0);
             var endTime = new DateTime(2000, 1, 3, 5, 0, 0, 0);
-            Assert.Throws<ArgumentException>(() => _hourCalculator.CalculateTime(startTime, endTime));
+            Assert.Throws<ArgumentException>(() => _hourCalculator.ValidateTimesAreAcceptable(startTime, endTime));
         }
     }
 }

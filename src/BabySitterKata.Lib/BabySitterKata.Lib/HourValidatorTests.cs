@@ -7,14 +7,7 @@ namespace BabySitterKata.Lib
         private const int NumberOfHoursToAddToEarliestStartTime = 17;
         private const int MaximumBabysittingTime = 11;
 
-        public TimeSpan CalculateTime(DateTime startTime, DateTime endTime)
-        {
-            var timeSpan = endTime - startTime;
-            ValidateTimesAreAcceptable(startTime, endTime);
-            return new TimeSpan(timeSpan.Hours, 0, 0);
-        }
-
-        private void ValidateTimesAreAcceptable(DateTime startTime, DateTime endTime)
+        public void ValidateTimesAreAcceptable(DateTime startTime, DateTime endTime)
         {
             var earliestStartTime = new DateTime(startTime.Year, startTime.Month, startTime.Day, NumberOfHoursToAddToEarliestStartTime, 0, 0);
             if (startTime < earliestStartTime)
