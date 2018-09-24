@@ -30,7 +30,7 @@ namespace BabySitterKata.Tests
         [Test]
         public void BabySittingAcrossMidnightReturnsCorrectTotalPay()
         {
-            Assert.AreEqual(28, _payCalculator.CalculatePayForNumberOfHours(new DateTime(1, 1, 1, 23, 0, 0), new DateTime(1, 1, 2, 1, 0, 0)));
+            Assert.AreEqual(24, _payCalculator.CalculatePayForNumberOfHours(new DateTime(1, 1, 1, 23, 0, 0), new DateTime(1, 1, 2, 1, 0, 0)));
         }
 
         [Test]

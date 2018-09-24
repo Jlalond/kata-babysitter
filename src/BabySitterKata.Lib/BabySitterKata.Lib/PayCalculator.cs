@@ -12,7 +12,7 @@ namespace BabySitterKata.Lib
             var temporaryTime = startTime;
             while (temporaryTime < endTime)
             {
-                if(temporaryTime < midnightOfBabysittingDay && midnightOfBabysittingDay < bedTime)
+                if(temporaryTime < midnightOfBabysittingDay && temporaryTime < bedTime)
                 {
                     total += 12;
                 }
